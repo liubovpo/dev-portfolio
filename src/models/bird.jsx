@@ -1,18 +1,23 @@
-import birdScene from '../assets/3d/bird.glb'
+import birdScene from "../assets/3d/bird.glb";
 
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
 
 export function Bird(props) {
   const group = useRef();
   const { nodes, materials, animations } = useGLTF(birdScene);
   const { actions } = useAnimations(animations, group);
+
+  useEffect(() => {
+    actions["AnimationStack"].play();
+  }, []);
+
   return (
     <group ref={group} {...props} dispose={null}>
       <group name="Sketchfab_Scene">
         <group
           name="Sketchfab_model"
-          position={[0, 0.147, 0]}
+          position={[0, 0, 0]}
           rotation={[1.576, 0, 0]}
         >
           <group
@@ -417,4 +422,4 @@ export function Bird(props) {
 
 useGLTF.preload("/bird.glb");
 
-export default Bird
+export default Bird;

@@ -1,15 +1,35 @@
 import React from "react";
 import { Canvas } from "@react-three/fiber";
-import { Suspense } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import Loader from "../components/Loader";
 import Island from "../models/island";
 import Bird from "../models/bird";
 
 const Home = () => {
+  const [birdPosition, setBirdPosition] = useState([0, 0, 0]);
+  const time = useRef(0);
+  const radius = 3;
+
+  useEffect(() => {
+    const animateBird = () => {
+      const x = Math.cos(time.current) * radius;
+      const y = 0.5;
+      const z = Math.sin(time.current) * radius + 1;
+
+      setBirdPosition([x, y, z]);
+
+      time.current += 0.005;
+    };
+
+    const animationId = setInterval(animateBird, 30);
+
+    return () => clearInterval(animationId);
+  }, []);
+
   const adjustIslanForScreens = () => {
     let screenScale = null;
-    let screenPosition = [1, 0, 0];
-    let rotation = [0.4, 5, 0.1];
+    let screenPosition = [0, 0, 0];
+    let rotation = [0.4, 4.8, 0.1];
 
     if (window.innerWidth < 768) {
       screenScale = [1.1, 1.1, 1.1];
@@ -18,14 +38,20 @@ const Home = () => {
     }
     return [screenScale, rotation, screenPosition];
   };
+
+  const [currentStage, setCurrentStage] = useState(1);
+  const [isRotating, setIsRotating] = useState(false);
   const [islandScale, islandRotation, islandPosition] = adjustIslanForScreens();
+
   return (
     <section className="w-full h-screen relative">
       {/* <div className='absolute top-28 left-0 right-0 z-10 flex items-center justify-center'>
         Text
       </div> */}
       <Canvas
-        className="w-full h-full bg-transparent"
+        className={`w-full h-full bg-transparent ${
+          isRotating ? "cursor-grabbing" : "cursor-grab"
+        }`}
         camera={{ near: 0.1, far: 1000 }}
       >
         <Suspense fallback={<Loader />}>
@@ -44,11 +70,14 @@ const Home = () => {
             intensity={1}
           />
           <Bird
-            scale={islandScale}
+            scale={[2, 2, 2]}
             rotation={islandRotation}
-            position={[0, 0, 4]}
+            position={birdPosition}
           />
           <Island
+            isRotating={isRotating}
+            setIsRotating={setIsRotating}
+            setCurrentStage={setCurrentStage}
             scale={islandScale}
             rotation={islandRotation}
             position={islandPosition}
