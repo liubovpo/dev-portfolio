@@ -23,7 +23,8 @@ export default {
         poppins: ['Poppins', "sans-serif"]
       },
       boxShadow: {
-        card: '0px 1px 2px 0px rgba(0, 0, 0, 0.05)'
+        card: '0px 1px 2px 0px rgba(0, 0, 0, 0.05)',
+        cardhover: '0 0 1px 0 rgba(189,192,207,0.06),0 10px 16px -1px rgba(189,192,207,0.4)',
       }
     },
   },
