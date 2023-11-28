@@ -4,6 +4,7 @@ import { Suspense, useEffect, useRef, useState } from "react";
 import Loader from "../components/Loader";
 import Island from "../models/island";
 import Bird from "../models/bird";
+import HomeInfo from "../components/HomeInfo";
 
 const Home = () => {
   const [birdPosition, setBirdPosition] = useState([0, 0, 0]);
@@ -26,28 +27,28 @@ const Home = () => {
     return () => clearInterval(animationId);
   }, []);
 
-  const adjustIslanForScreens = () => {
+  const adjustIslandForScreens = () => {
     let screenScale = null;
-    let screenPosition = [0, 0, 0];
+    let screenPosition = [0, -0.3, 0];
     let rotation = [0.4, 4.8, 0.1];
 
     if (window.innerWidth < 768) {
-      screenScale = [1.1, 1.1, 1.1];
+      screenScale = [1.3, 1.3, 1.3];
     } else {
-      screenScale = [1.6, 1.6, 1.6];
+      screenScale = [1.8, 1.8, 1.8];
     }
     return [screenScale, rotation, screenPosition];
   };
 
   const [currentStage, setCurrentStage] = useState(1);
   const [isRotating, setIsRotating] = useState(false);
-  const [islandScale, islandRotation, islandPosition] = adjustIslanForScreens();
+  const [islandScale, islandRotation, islandPosition] = adjustIslandForScreens();
 
   return (
     <section className="w-full h-screen relative">
-      {/* <div className='absolute top-28 left-0 right-0 z-10 flex items-center justify-center'>
-        Text
-      </div> */}
+      <div className='absolute top-28 left-0 right-0 z-10 flex items-center justify-center'>
+        {currentStage && <HomeInfo currentStage={currentStage}/>}
+      </div>
       <Canvas
         className={`w-full h-full bg-transparent ${
           isRotating ? "cursor-grabbing" : "cursor-grab"
