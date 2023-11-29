@@ -420,6 +420,6 @@ export function Bird(props) {
   );
 }
 
-useGLTF.preload("/bird.glb");
+
 
 export default Bird;

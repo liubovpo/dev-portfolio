@@ -1,4 +1,4 @@
-import { meta, shopify, starbucks, tesla } from "../assets/images";
+import { meta, shopify, starbucks, tesla, job } from "../assets/images";
 import {
     car,
     contact,
@@ -19,7 +19,8 @@ import {
     react,
     redux,
     sass,
-    snapgram,
+    twoleaves,
+    calendar,
     summiz,
     tailwindcss,
     threads,
@@ -98,7 +99,7 @@ export const experiences = [
     {
         title: "Vocational training",
         company_name: "IronHack",
-        icon: starbucks,
+        icon: job,
         iconBg: "#accbe1",
         date: "Aug 2023 — Nov 2023",
         points: [
@@ -113,8 +114,8 @@ export const experiences = [
     {
         title: "Web & Graphic Designer",
         company_name: "Freelance",
-        icon: starbucks,
-        iconBg: "#accbe1",
+        icon: job,
+        iconBg: "#b7e4c7",
         date: "Dec 2021 — Aug 2023",
         points: [
             "Led website development projects and personally designed website prototypes, using Figma and my knowledge in HTML, CSS, JS.",
@@ -124,7 +125,7 @@ export const experiences = [
     {
         title: "Web & Graphic Designer",
         company_name: "Innothera, OOO 'Innotech'",
-        icon: tesla,
+        icon: job,
         iconBg: "#fbc3bc",
         date: "Sep 2020 — Dec 2021",
         points: [
@@ -154,21 +155,21 @@ export const socialLinks = [
 
 export const projects = [
     {
-        iconUrl: pricewise,
+        iconUrl: summiz,
         theme: 'btn-back-blue',
         name: 'Dream AI',
         description: 'Dream AI is a visionary platform where users can input dream descrip- tions to generate personalized dream images and share them with the community. ',
         link: 'https://github.com/liubovpo/dream-ai',
     },
     {
-        iconUrl: threads,
+        iconUrl: twoleaves,
         theme: 'btn-back-green',
         name: 'Grow Together',
         description: 'Plant Care App, where you can create your user profile, log your plants, access expert care information, and foster a thriving community.',
         link: 'https://github.com/JaySchenk/GrowTogether',
     },
     {
-        iconUrl: car,
+        iconUrl: calendar,
         theme: 'btn-back-red',
         name: 'DayMaster',
         description: 'DayMaster is a web application designed to help you streamline your task management. It offers features to create, manage, and track tasks with different priorities, due dates, and descriptions.',

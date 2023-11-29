@@ -7,7 +7,7 @@ const CTA = () => {
         Have a project in mind? <br className='sm:block hidden' />
         Let’s build something together!
       </p>
-      <Link to='/contact' className='btn'>
+      <Link to='/contact' className='btn hover:from-[#0095ff] hover:to-[#0048ff]'>
         Contact
       </Link>
     </section>
