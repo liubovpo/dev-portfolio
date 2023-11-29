@@ -8,7 +8,7 @@ import Projects from "./pages/Projects";
 
 function App() {
   return (
-    <main>
+    <main className="bg-slate-300/20">
       <Router>
         <Navbar/>
         <Routes>
