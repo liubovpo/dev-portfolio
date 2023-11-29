@@ -5,6 +5,7 @@ import emailjs from "@emailjs/browser";
 import Fox from "../models/fox";
 import Loader from "../components/Loader";
 import useAlert from "../hooks/useAlert";
+import Alert from "../components/Alert";
 
 const Contact = () => {
   const formRef = useRef(null);
@@ -40,8 +41,10 @@ const Contact = () => {
       )
       .then(() => {
         setIsLoading(false);
+        showAlert({show:true, text:"Message sent successfully!", type: 'success'})
         
         setTimeout(()=>{
+          hideAlert()
           setForm({ name: "", email: "", message: "" });
           setCurrentAnimation('idle')
         },[3000])
@@ -49,12 +52,14 @@ const Contact = () => {
       .catch((error) => {
         setIsLoading(false);
         setCurrentAnimation('idle')
+        showAlert({show:true, text:"Something went wrong", type: 'danger'})
         console.log(error);
       });
   };
 
   return (
     <section className="relative flex lg:flex-row flex-col max-container">
+      {alert.show && <Alert {... alert}/>}
       <div className="flex-1 min-w-[50%] flex flex-col">
         <h1 className="head-text">Get in touch</h1>
         <form
