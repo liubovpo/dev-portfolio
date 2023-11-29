@@ -12,6 +12,15 @@ const Home = () => {
   const radius = 3;
 
   useEffect(() => {
+    const body = document.querySelector('body');
+    body.classList.add('body-scroll-lock');
+
+    return () => {
+      body.classList.remove('body-scroll-lock');
+    };
+  }, []);
+
+  useEffect(() => {
     const animateBird = () => {
       const x = Math.cos(time.current) * radius;
       const y = 0.5;
