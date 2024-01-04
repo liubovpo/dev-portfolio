@@ -10,8 +10,10 @@ const Footer = () => {
       <div className='footer-container'>
         <p>
           © 2023 <strong>Liubov Pozdeeva</strong>
-          <p className='text-sm text-gray-400'>
-           3d models:
+          <p className=' text-xs text-gray-400 underline'>
+            <Link to="https://sketchfab.com/">
+                3d models: sempai_desu, trinityscsp, victory_mirosya
+            </Link>
           </p>
         </p>
 
